@@ -82,7 +82,7 @@ public class Service {
 		Scanner s = new Scanner(System.in);
 		System.out.println("Digite o id da venda ");
 		Integer id = Integer.parseInt(s.next());
-		VendaDTO vendaDTO = new VendaDTO(id, 0, 0);
+		VendaDTO vendaDTO = new VendaDTO(id, 0, 0,0);
 		vendaDTO.listaVendas();		
 	}
 
@@ -139,7 +139,7 @@ public class Service {
 		Integer id = Integer.parseInt(s.next());
 		Venda venda = new Venda();
 		venda.setId(id);
-		VendaDTO vendaDTO = new VendaDTO(id, 0, 0);
+		VendaDTO vendaDTO = new VendaDTO(id, 0, 0,0);
 		vendaDTO.deleteVenda();
 	}
 
@@ -198,9 +198,11 @@ public class Service {
 		Integer idVenda = Integer.parseInt(s.next());
 		System.out.println("Digite 1 para editar o id do funcionario: ");
 		System.out.println("Digite 2 para editar o id do carro: ");
+		System.out.println("Digite 3 para editar a quantidade: ");
 		Integer edicao = Integer.valueOf(s.next());
 		Integer idFuncionario = 0;
 		Integer idCarro = 0;
+		Integer quantidade = 0;
 		String coluna = null;	
 		switch (edicao) {
 		case 1:
@@ -213,10 +215,15 @@ public class Service {
 			idCarro = Integer.parseInt(s.next());
 			coluna = "idcarro";
 			break;
+		case 3:
+			System.out.println("Digite a quantidade: ");
+			quantidade = Integer.parseInt(s.next());
+			coluna = "quantidade";
+			break;
 		default:
 			break;
 		}
-		VendaDTO vendaDTO = new VendaDTO(idVenda, idFuncionario, idCarro);
+		VendaDTO vendaDTO = new VendaDTO(idVenda, idFuncionario, idCarro, quantidade);
 		vendaDTO.updateVenda(coluna);
 	}
 
@@ -314,7 +321,9 @@ public class Service {
 		Integer idFuncionario = Integer.parseInt(s.next());
 		System.out.println("Digite o id do carro: ");
 		Integer idCarro = Integer.parseInt(s.next());
-		VendaDTO vendaDto = new VendaDTO(id, idFuncionario, idCarro);
+		System.out.println("Digite a quantidade: ");
+		Integer quantidade = Integer.parseInt(s.next());
+		VendaDTO vendaDto = new VendaDTO(id, idFuncionario, idCarro, quantidade);
 		vendaDto.addVenda();
 	}
 

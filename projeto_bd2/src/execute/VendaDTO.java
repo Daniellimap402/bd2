@@ -11,10 +11,11 @@ public class VendaDTO {
 	Venda vendaTest = new Venda();
 	VendaDAO vendaDAO = null;
 
-	public VendaDTO(int id, int idFuncionario, int idCarro) {
+	public VendaDTO(int id, int idFuncionario, int idCarro, int quantidade) {
 		vendaTest.setId(id);
 		vendaTest.setIdFuncionario(idFuncionario);
 		vendaTest.setIdCarro(idCarro);
+		vendaTest.setQuantidade(quantidade);
 	}
 
 	public void addVenda() {

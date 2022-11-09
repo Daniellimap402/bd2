@@ -5,6 +5,7 @@ public class Venda {
 	private int id;
 	private int idFuncionario;
 	private int idCarro;
+	private int quantidade;
 	
 	public int getId() {
 		return id;
@@ -24,10 +25,19 @@ public class Venda {
 	public void setIdCarro(int idCarro) {
 		this.idCarro = idCarro;
 	}
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
 	@Override
 	public String toString() {
-		return "Venda [id=" + id + ", idFuncionario=" + idFuncionario + ", idCarro=" + idCarro + "]";
+		return "Venda [id=" + id + ", idFuncionario=" + idFuncionario + ", idCarro=" + idCarro + ", quantidade="
+				+ quantidade + "]";
 	}
+	
+	
 
 	
 

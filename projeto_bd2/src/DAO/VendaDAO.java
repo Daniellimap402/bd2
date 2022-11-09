@@ -21,13 +21,14 @@ public class VendaDAO {
 	}
 
 	public void addVenda(Venda venda) {
-		String sql = "INSERT INTO venda VALUES(?,?,?)";
+		String sql = "INSERT INTO venda VALUES(?,?,?,?)";
 
 		try {
 			PreparedStatement preparator = con.prepareStatement(sql);
 			preparator.setInt(1, venda.getId());
 			preparator.setInt(2, venda.getIdFuncionario());
 			preparator.setInt(3, venda.getIdCarro());
+			preparator.setInt(4, venda.getQuantidade());
 
 			preparator.execute();
 			preparator.close();
@@ -58,17 +59,20 @@ public class VendaDAO {
 
 		try {
 			PreparedStatement preparator = null;
-			// Update site
 			if (collumn.toLowerCase().equals("idfuncionario")) {
 				sql = "UPDATE venda SET id_funcionario = ? WHERE id = ?";
 				preparator = con.prepareStatement(sql);
 				preparator.setInt(1, venda.getIdFuncionario());
 			}
-			// Update address
 			else if (collumn.toLowerCase().equals("idcarro")) {
 				sql = "UPDATE venda SET id_carro = ? WHERE id = ?";
 				preparator = con.prepareStatement(sql);
 				preparator.setInt(1, venda.getIdCarro());
+			}
+			else if(collumn.toLowerCase().equals("quantidade")) {
+				sql = "UPDATE venda SET quantidade = ? WHERE id = ?";
+				preparator = con.prepareStatement(sql);
+				preparator.setInt(1, venda.getQuantidade());
 			}
 			preparator.setInt(2, venda.getId());
 
@@ -95,6 +99,7 @@ public class VendaDAO {
 				eachVenda.setId(results.getInt("id"));
 				eachVenda.setIdFuncionario(results.getInt("id_funcionario"));
 				eachVenda.setIdCarro(results.getInt("id_carro"));
+				eachVenda.setQuantidade(results.getInt("quantidade"));
 
 				list.add(eachVenda);
 			}
